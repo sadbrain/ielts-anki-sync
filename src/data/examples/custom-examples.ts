@@ -5,6 +5,8 @@ import type { VocabSourceItem } from "../../vocab/types";
 export const minimalRecognitionExample: VocabSourceItem = {
   uid: "example_minimal_recognition",
   expression: "substantial",
+  wordStress: "/səbˈstænʃl/",
+  googleTranslateUrl: "https://translate.google.com/?sl=en&tl=vi&text=substantial&op=translate",
   meaningVN: "dang ke"
 };
 
@@ -70,6 +72,14 @@ export const fullMultiModeExample: VocabSourceItem = {
   expression: "cope with",
   meaningVN: "doi pho voi",
   englishMeaning: "to deal successfully with a difficult situation",
+  semantics: "Use for managing a difficult situation, not simply solving it completely.",
+  collocations: ["cope with stress", "cope with pressure", "cope with change"],
+  synonyms: ["deal with", "manage", "handle"],
+  antonyms: ["give in", "collapse under pressure"],
+  wordFamily: ["coping"],
+  soundNote: "The final /p/ links smoothly into with in connected speech.",
+  grammarPattern: "cope with + noun",
+  register: "neutral",
   chunk: "cope with academic pressure",
   example: "University students must learn to cope with deadlines.",
   cloze: "University students must learn to {{c1::cope with}} deadlines.",

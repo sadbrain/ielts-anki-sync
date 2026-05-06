@@ -40,8 +40,18 @@ export function validateVocabItem(raw: unknown): ValidationResult {
     item: {
       uid: uid.value,
       expression: readOptionalString(record.expression) ?? readOptionalString(record.word),
+      wordStress: readOptionalString(record.wordStress),
+      googleTranslateUrl: readOptionalString(record.googleTranslateUrl),
       meaningVN: readOptionalString(record.meaningVN) ?? readOptionalString(record.meaning),
       englishMeaning: readOptionalString(record.englishMeaning),
+      semantics: readOptionalString(record.semantics),
+      collocations: readOptionalStringList(record.collocations),
+      synonyms: readOptionalStringList(record.synonyms),
+      antonyms: readOptionalStringList(record.antonyms),
+      wordFamily: readOptionalStringList(record.wordFamily),
+      soundNote: readOptionalString(record.soundNote),
+      grammarPattern: readOptionalString(record.grammarPattern),
+      register: readOptionalString(record.register),
       chunk: readOptionalString(record.chunk),
       example: readOptionalString(record.example),
       cloze: readOptionalString(record.cloze),
@@ -77,6 +87,28 @@ function readOptionalString(value: unknown): string | undefined {
 
   const trimmed = value.trim();
   return trimmed === "" ? undefined : trimmed;
+}
+
+function readOptionalStringList(value: unknown): string[] | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    return trimmed === "" ? undefined : [trimmed];
+  }
+
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  const values = value
+    .filter((entry): entry is string => typeof entry === "string")
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+
+  return values.length > 0 ? values : undefined;
 }
 
 function readCardModes(

@@ -28,6 +28,10 @@ export function buildNoteTags(item: VocabItem, mode: CardMode): string[] {
     tags.push(`priority__${sanitizeTagValue(item.priority)}`);
   }
 
+  if (item.register) {
+    tags.push(`register__${sanitizeTagValue(item.register)}`);
+  }
+
   if (item.source) {
     tags.push(`source__${sanitizeTagValue(item.source)}`);
   }

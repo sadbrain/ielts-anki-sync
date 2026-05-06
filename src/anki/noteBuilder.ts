@@ -56,6 +56,16 @@ function buildRecognitionNote(item: VocabItem, config: AppConfig): NoteBuildResu
         Front: escapeHtml(item.expression),
         Back: buildHtmlBlock([
           ["Meaning VN", item.meaningVN],
+          ["Word stress", item.wordStress],
+          ["Listen", buildGoogleTranslateLink(item)],
+          ["Semantics", item.semantics],
+          ["Collocations", item.collocations],
+          ["Synonyms", item.synonyms],
+          ["Antonyms", item.antonyms],
+          ["Word family", item.wordFamily],
+          ["Sound note", item.soundNote],
+          ["Grammar pattern", item.grammarPattern],
+          ["Register", item.register],
           ["Chunk", item.chunk],
           ["Example", item.example],
           ["My sentence", item.mySentence],
@@ -88,7 +98,17 @@ function buildClozeNote(item: VocabItem, config: AppConfig): NoteBuildResult {
         Text: item.cloze,
         "Back Extra": buildHtmlBlock([
           ["Meaning VN", item.meaningVN],
+          ["Word stress", item.wordStress],
+          ["Listen", buildGoogleTranslateLink(item)],
           ["English meaning", item.englishMeaning],
+          ["Semantics", item.semantics],
+          ["Collocations", item.collocations],
+          ["Synonyms", item.synonyms],
+          ["Antonyms", item.antonyms],
+          ["Word family", item.wordFamily],
+          ["Sound note", item.soundNote],
+          ["Grammar pattern", item.grammarPattern],
+          ["Register", item.register],
           ["Chunk", item.chunk],
           ["Example", item.example],
           ["My sentence", item.mySentence],
@@ -121,6 +141,16 @@ function buildProductionNote(item: VocabItem, config: AppConfig): NoteBuildResul
         Front: buildStackedText(item.meaningVN, item.englishMeaning),
         Back: buildHtmlBlock([
           ["Expression", item.expression],
+          ["Word stress", item.wordStress],
+          ["Listen", buildGoogleTranslateLink(item)],
+          ["Semantics", item.semantics],
+          ["Collocations", item.collocations],
+          ["Synonyms", item.synonyms],
+          ["Antonyms", item.antonyms],
+          ["Word family", item.wordFamily],
+          ["Sound note", item.soundNote],
+          ["Grammar pattern", item.grammarPattern],
+          ["Register", item.register],
           ["Chunk", item.chunk],
           ["Example", item.example],
           ["My sentence", item.mySentence]
@@ -183,6 +213,10 @@ function buildMistakeFixNote(item: VocabItem, config: AppConfig): NoteBuildResul
         Front: escapeHtml(item.mistakePrompt || `Fix this mistake: ${item.mistake}`),
         Back: buildHtmlBlock([
           ["Correct expression", item.expression],
+          ["Word stress", item.wordStress],
+          ["Listen", buildGoogleTranslateLink(item)],
+          ["Grammar pattern", item.grammarPattern],
+          ["Register", item.register],
           ["Correct chunk", item.chunk],
           ["Mistake note", item.mistake]
         ])
@@ -195,11 +229,46 @@ function buildMistakeFixNote(item: VocabItem, config: AppConfig): NoteBuildResul
   };
 }
 
-function buildHtmlBlock(entries: Array<[string, string | undefined]>): string {
+type HtmlLink = {
+  href: string;
+  label: string;
+};
+
+type HtmlValue = string | string[] | HtmlLink | undefined;
+
+function buildHtmlBlock(entries: Array<[string, HtmlValue]>): string {
   return entries
-    .filter(([, value]) => Boolean(value))
-    .map(([label, value]) => `<div><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value || "")}</div>`)
+    .filter(([, value]) => hasValue(value))
+    .map(([label, value]) => `<div><strong>${escapeHtml(label)}:</strong> ${formatHtmlValue(value)}</div>`)
     .join("");
+}
+
+function hasValue(value: HtmlValue): boolean {
+  if (Array.isArray(value)) {
+    return value.length > 0;
+  }
+
+  if (isHtmlLink(value)) {
+    return Boolean(value.href && value.label);
+  }
+
+  return Boolean(value);
+}
+
+function formatHtmlValue(value: HtmlValue): string {
+  if (Array.isArray(value)) {
+    return `<ul>${value.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ul>`;
+  }
+
+  if (isHtmlLink(value)) {
+    return `<a href="${escapeHtml(value.href)}">${escapeHtml(value.label)}</a>`;
+  }
+
+  return escapeHtml(value || "");
+}
+
+function isHtmlLink(value: HtmlValue): value is HtmlLink {
+  return Boolean(value && typeof value === "object" && !Array.isArray(value) && "href" in value && "label" in value);
 }
 
 function buildStackedText(primary: string, secondary?: string): string {
@@ -215,6 +284,19 @@ function buildStackedText(primary: string, secondary?: string): string {
 function buildDeckName(config: AppConfig, item: VocabItem): string {
   const topic = item.topic?.trim();
   return topic ? `${config.deckName}::${topic}` : config.deckName;
+}
+
+function buildGoogleTranslateLink(item: VocabItem): HtmlLink | undefined {
+  const text = item.expression?.trim();
+
+  if (!text && !item.googleTranslateUrl) {
+    return undefined;
+  }
+
+  return {
+    href: item.googleTranslateUrl || `https://translate.google.com/?sl=en&tl=vi&text=${encodeURIComponent(text || "")}&op=translate`,
+    label: "Google Translate"
+  };
 }
 
 function escapeHtml(value: string): string {

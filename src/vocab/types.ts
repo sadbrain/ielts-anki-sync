@@ -7,12 +7,23 @@ export const SUPPORTED_CARD_MODES = [
 ] as const;
 
 export type CardMode = (typeof SUPPORTED_CARD_MODES)[number];
+export type TextListValue = string | string[];
 
 export interface VocabSourceItem {
   uid: string;
   expression?: string;
+  wordStress?: string;
+  googleTranslateUrl?: string;
   meaningVN?: string;
   englishMeaning?: string;
+  semantics?: string;
+  collocations?: TextListValue;
+  synonyms?: TextListValue;
+  antonyms?: TextListValue;
+  wordFamily?: TextListValue;
+  soundNote?: string;
+  grammarPattern?: string;
+  register?: string;
   chunk?: string;
   example?: string;
   cloze?: string;
@@ -29,7 +40,14 @@ export interface VocabSourceItem {
   upsertModes?: CardMode[];
 }
 
-export interface VocabItem extends Omit<VocabSourceItem, "cardModes" | "upsertModes"> {
+export interface VocabItem extends Omit<
+  VocabSourceItem,
+  "cardModes" | "upsertModes" | "collocations" | "synonyms" | "antonyms" | "wordFamily"
+> {
+  collocations?: string[];
+  synonyms?: string[];
+  antonyms?: string[];
+  wordFamily?: string[];
   cardModes: CardMode[];
   upsertModes: CardMode[];
 }
