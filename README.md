@@ -14,7 +14,7 @@ Small TypeScript CLI that reads IELTS vocabulary items from a JSONL file and cre
 1. Install dependencies:
 
    ```bash
-   npm install
+   npm install  
    ```
 
 2. Create `.env` from `.env.example`.
