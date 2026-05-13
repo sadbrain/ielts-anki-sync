@@ -203,5 +203,297 @@ export const environmentTopic: VocabSourceItem[] = [
     cloze:
       "Pollution can {{c1::worsen}} the effects of climate change. (Ô nhiễm có thể làm cho tác động của biến đổi khí hậu trở nên tồi tệ hơn.)",
     cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_rising_sea_levels",
+    expression: "rising sea levels",
+    meaningVN: "mực nước biển dâng cao",
+    englishMeaning: "an increase in the average level of the sea - sự gia tăng mực nước biển trung bình",
+    grammarPattern: "rising + plural noun - sự gia tăng của + danh từ số nhiều",
+    chunk: "rising sea levels caused by climate change - mực nước biển dâng cao do biến đổi khí hậu",
+    example:
+      "Some effects of climate change include rising sea levels, more intense heatwaves and more frequent wildfires.",
+    cloze:
+      "Climate change can lead to {{c1::rising sea levels}}. (Biến đổi khí hậu có thể dẫn đến mực nước biển dâng cao.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_more_intense_heatwaves",
+    expression: "more intense heatwaves",
+    meaningVN: "những đợt nắng nóng nghiêm trọng hơn",
+    englishMeaning: "heatwaves that become stronger or more severe - các đợt nắng nóng trở nên mạnh hơn hoặc nghiêm trọng hơn",
+    synonyms: [
+      "severe heatwaves - các đợt nắng nóng nghiêm trọng",
+      "extreme heatwaves - các đợt nắng nóng cực đoan"
+    ],
+    chunk: "more intense heatwaves in many parts of the world - các đợt nắng nóng nghiêm trọng hơn ở nhiều nơi trên thế giới",
+    example: "More intense heatwaves have been observed in many parts of the world.",
+    cloze:
+      "Many countries are experiencing {{c1::more intense heatwaves}}. (Nhiều quốc gia đang trải qua các đợt nắng nóng nghiêm trọng hơn.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_more_frequent_wildfires",
+    expression: "more frequent wildfires",
+    meaningVN: "các vụ cháy rừng thường xuyên hơn",
+    englishMeaning: "wildfires that happen more often - các vụ cháy rừng xảy ra thường xuyên hơn",
+    synonyms: [
+      "frequent wildfires - các vụ cháy rừng thường xuyên",
+      "regular wildfires - các vụ cháy rừng xảy ra đều đặn"
+    ],
+    chunk: "more frequent wildfires during dry seasons - các vụ cháy rừng thường xuyên hơn trong mùa khô",
+    example: "More frequent wildfires have been observed in many parts of the world.",
+    cloze:
+      "Long droughts can result in {{c1::more frequent wildfires}}. (Hạn hán kéo dài có thể dẫn đến các vụ cháy rừng thường xuyên hơn.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_natural_resources",
+    expression: "natural resources",
+    meaningVN: "tài nguyên thiên nhiên",
+    englishMeaning:
+      "materials or substances that exist in nature and can be used by people - vật liệu hoặc chất có sẵn trong tự nhiên và con người có thể sử dụng",
+    collocations: [
+      "exploit natural resources - khai thác tài nguyên thiên nhiên",
+      "conserve natural resources - bảo tồn tài nguyên thiên nhiên",
+      "scarce natural resources - tài nguyên thiên nhiên khan hiếm"
+    ],
+    example: "Life would be much more difficult if natural resources, such as fossil fuels, became scarce."
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_fossil_fuels",
+    expression: "fossil fuels",
+    meaningVN: "nhiên liệu hóa thạch",
+    englishMeaning:
+      "fuels made from ancient plants and animals - nhiên liệu được tạo ra từ thực vật và động vật cổ xưa",
+    collocations: [
+      "burn fossil fuels - đốt nhiên liệu hóa thạch",
+      "depend on fossil fuels - phụ thuộc vào nhiên liệu hóa thạch",
+      "replace fossil fuels - thay thế nhiên liệu hóa thạch"
+    ],
+    wordFamily: [
+      "fossil - hóa thạch",
+      "fuel - nhiên liệu"
+    ],
+    example: "If natural resources, such as fossil fuels, become scarce, the world will face a major challenge."
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_become_scarce",
+    expression: "become scarce",
+    meaningVN: "trở nên khan hiếm",
+    englishMeaning: "to become difficult to find or obtain - trở nên khó tìm hoặc khó có được",
+    grammarPattern: "become scarce - trở nên khan hiếm",
+    synonyms: [
+      "run short - trở nên thiếu hụt",
+      "be in short supply - trong tình trạng thiếu nguồn cung"
+    ],
+    example: "If natural resources become scarce, the world will face a major challenge.",
+    cloze:
+      "Natural resources may {{c1::become scarce}} in the future. (Tài nguyên thiên nhiên có thể trở nên khan hiếm trong tương lai.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_in_recent_decades",
+    expression: "in recent decades",
+    meaningVN: "trong những thập kỷ gần đây",
+    grammarPattern: "in recent decades - trong những thập kỷ gần đây",
+    synonyms: [
+      "in recent years - trong những năm gần đây",
+      "in recent times - trong thời gian gần đây"
+    ],
+    example: "In recent decades, the world has faced a major challenge from climate change.",
+    cloze:
+      "{{c1::In recent decades}}, climate change has become a more serious issue. (Trong những thập kỷ gần đây, biến đổi khí hậu đã trở thành một vấn đề nghiêm trọng hơn.)",
+    typePrompt: "___ recent decades, climate change has become more serious. (___ những thập kỷ gần đây, biến đổi khí hậu đã trở nên nghiêm trọng hơn.)",
+    typeAnswer: "In",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_more_and_more_unpredictable",
+    expression: "more and more unpredictable",
+    meaningVN: "ngày càng trở nên khó dự đoán",
+    englishMeaning: "increasingly difficult to predict - ngày càng khó dự đoán",
+    wordFamily: [
+      "predict - dự đoán",
+      "predictable - có thể dự đoán được",
+      "unpredictable - khó dự đoán"
+    ],
+    example: "The weather in this area is becoming more and more unpredictable.",
+    cloze:
+      "The weather is becoming {{c1::more and more unpredictable}}. (Thời tiết đang ngày càng trở nên khó dự đoán.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_environmental_degradation",
+    expression: "environmental degradation",
+    meaningVN: "suy thoái môi trường",
+    englishMeaning:
+      "the process in which the environment becomes damaged or worse - quá trình môi trường bị tổn hại hoặc trở nên tệ hơn",
+    wordFamily: [
+      "degrade - làm suy thoái",
+      "degradation - sự suy thoái",
+      "environmental - thuộc về môi trường"
+    ],
+    chunk: "tackle environmental degradation - giải quyết suy thoái môi trường",
+    example: "Environmental degradation could put an end to life on Earth if nothing is done to tackle this issue.",
+    cloze:
+      "{{c1::Environmental degradation}} could put an end to life on Earth. (Suy thoái môi trường có thể chấm dứt sự sống trên Trái Đất.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_put_an_end_to_something",
+    expression: "put an end to something",
+    meaningVN: "chấm dứt điều gì đó",
+    grammarPattern: "put an end to + noun - chấm dứt + danh từ",
+    synonyms: [
+      "end something - chấm dứt điều gì đó",
+      "bring something to an end - đưa điều gì đó đến hồi kết"
+    ],
+    example: "Environmental degradation could put an end to life on Earth.",
+    cloze:
+      "Environmental degradation could {{c1::put an end to}} life on Earth. (Suy thoái môi trường có thể chấm dứt sự sống trên Trái Đất.)",
+    typePrompt: "put an end ___ something (chấm dứt ___ điều gì đó)",
+    typeAnswer: "to",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_tackle_something",
+    expression: "tackle something",
+    meaningVN: "giải quyết / xử lý điều gì đó",
+    englishMeaning: "to make an effort to deal with a problem - nỗ lực xử lý một vấn đề",
+    synonyms: [
+      "address something - giải quyết một vấn đề",
+      "deal with something - xử lý điều gì đó",
+      "mitigate something - giảm thiểu điều gì đó"
+    ],
+    grammarPattern: "tackle + problem/issue/challenge - giải quyết + vấn đề/thách thức",
+    example: "We need to tackle the issue of environmental degradation.",
+    cloze:
+      "Governments need to {{c1::tackle}} environmental degradation. (Các chính phủ cần giải quyết tình trạng suy thoái môi trường.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_nothing_is_done_to_tackle_something",
+    expression: "nothing is done to tackle something",
+    meaningVN: "không có hành động nào được thực hiện để giải quyết điều gì đó",
+    grammarPattern:
+      "nothing is done to tackle + noun - không có hành động nào được thực hiện để giải quyết + danh từ",
+    example: "If nothing is done to tackle environmental degradation, the consequences will be severe.",
+    cloze:
+      "If {{c1::nothing is done to tackle}} environmental degradation, the consequences will be severe. (Nếu không có hành động nào được thực hiện để giải quyết suy thoái môi trường, hậu quả sẽ nghiêm trọng.)",
+    cardModes: ["recognition", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_fossil_fuel_power_plants",
+    expression: "fossil fuel power plants",
+    meaningVN: "các nhà máy điện sử dụng nhiên liệu hóa thạch",
+    englishMeaning:
+      "power stations that generate electricity by burning fossil fuels - nhà máy tạo ra điện bằng cách đốt nhiên liệu hóa thạch",
+    chunk: "emissions from fossil fuel power plants - khí thải từ các nhà máy điện sử dụng nhiên liệu hóa thạch",
+    example:
+      "The amount of greenhouse gas emissions released from fossil fuel power plants has dramatically increased in recent decades.",
+    cloze:
+      "{{c1::Fossil fuel power plants}} are a major source of greenhouse gas emissions. (Các nhà máy điện sử dụng nhiên liệu hóa thạch là nguồn phát thải khí nhà kính lớn.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_be_released_from",
+    expression: "be released from ...",
+    meaningVN: "được thải ra từ ...",
+    grammarPattern: "be released from + source - được thải ra từ + nguồn phát thải",
+    chunk: "emissions released from factories - khí thải được thải ra từ các nhà máy",
+    example: "Greenhouse gas emissions are released from fossil fuel power plants.",
+    cloze:
+      "Greenhouse gas emissions are {{c1::released from}} fossil fuel power plants. (Khí nhà kính được thải ra từ các nhà máy điện sử dụng nhiên liệu hóa thạch.)",
+    typePrompt: "emissions are released ___ fossil fuel power plants (khí thải được thải ra ___ các nhà máy điện dùng nhiên liệu hóa thạch)",
+    typeAnswer: "from",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_be_released_into_the_atmosphere",
+    expression: "be released into the atmosphere",
+    meaningVN: "được thải vào khí quyển",
+    grammarPattern: "be released into + place - được thải vào + nơi/chỗ",
+    chunk: "carbon dioxide released into the atmosphere - khí CO2 được thải vào khí quyển",
+    example: "Large amounts of carbon dioxide are released into the atmosphere every year.",
+    cloze:
+      "Large amounts of carbon dioxide are {{c1::released into the atmosphere}} every year. (Một lượng lớn CO2 được thải vào khí quyển mỗi năm.)",
+    typePrompt: "carbon dioxide is released ___ the atmosphere (CO2 được thải ___ khí quyển)",
+    typeAnswer: "into",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_contribute_to_something",
+    expression: "contribute to something",
+    meaningVN: "góp phần gây ra / đóng góp vào điều gì đó",
+    englishMeaning: "to be one of the causes of something - là một trong những nguyên nhân gây ra điều gì đó",
+    grammarPattern: "contribute to + noun/gerund - góp phần vào + danh từ/danh động từ",
+    chunk: "contribute to climate change - góp phần gây ra biến đổi khí hậu",
+    example:
+      "Greenhouse gas emissions contribute to climate change, air pollution and global warming.",
+    cloze:
+      "Greenhouse gas emissions {{c1::contribute to}} climate change. (Khí nhà kính góp phần gây ra biến đổi khí hậu.)",
+    typePrompt: "contribute ___ climate change (góp phần gây ra ___ biến đổi khí hậu)",
+    typeAnswer: "to",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_amount_of_greenhouse_gas_emissions",
+    expression: "the amount of greenhouse gas emissions",
+    meaningVN: "lượng khí thải nhà kính",
+    englishMeaning: "the quantity of gases that trap heat in the atmosphere - lượng khí giữ nhiệt trong khí quyển",
+    chunk: "reduce the amount of greenhouse gas emissions - giảm lượng khí thải nhà kính",
+    example:
+      "The amount of greenhouse gas emissions released from fossil fuel power plants has dramatically increased in recent decades.",
+    cloze:
+      "The {{c1::amount of greenhouse gas emissions}} has increased in recent decades. (Lượng khí thải nhà kính đã tăng trong những thập kỷ gần đây.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_dramatically_increase_in_recent_decades",
+    expression: "dramatically increase in recent decades",
+    meaningVN: "tăng mạnh trong những thập kỷ gần đây",
+    englishMeaning: "to rise very sharply in recent decades - tăng lên rất mạnh trong những thập kỷ gần đây",
+    grammarPattern: "dramatically increase in + time period - tăng mạnh trong + khoảng thời gian",
+    synonyms: [
+      "rise sharply - tăng mạnh",
+      "increase significantly - tăng đáng kể"
+    ],
+    example: "Greenhouse gas emissions have dramatically increased in recent decades.",
+    cloze:
+      "Greenhouse gas emissions have {{c1::dramatically increased in recent decades}}. (Khí thải nhà kính đã tăng mạnh trong những thập kỷ gần đây.)",
+    typePrompt: "dramatically increase ___ recent decades (tăng mạnh ___ những thập kỷ gần đây)",
+    typeAnswer: "in",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_air_pollution_and_global_warming",
+    expression: "air pollution and global warming",
+    meaningVN: "ô nhiễm không khí và sự nóng lên toàn cầu",
+    englishMeaning:
+      "dirty air and the long-term rise in the Earth's temperature - không khí bị ô nhiễm và sự tăng nhiệt độ dài hạn của Trái Đất",
+    chunk: "contribute to air pollution and global warming - góp phần gây ô nhiễm không khí và nóng lên toàn cầu",
+    example:
+      "Greenhouse gas emissions contribute to climate change, air pollution and global warming.",
+    cardModes: ["recognition", "production"]
   }
 ];
