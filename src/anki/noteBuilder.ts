@@ -56,6 +56,7 @@ function buildRecognitionNote(item: VocabItem, config: AppConfig): NoteBuildResu
         Front: escapeHtml(item.expression),
         Back: buildHtmlBlock([
           ["Meaning VN", item.meaningVN],
+          ["English meaning", item.englishMeaning],
           ["Word stress", item.wordStress],
           ["Listen", buildGoogleTranslateLink(item)],
           ["Semantics", item.semantics],
@@ -153,7 +154,9 @@ function buildProductionNote(item: VocabItem, config: AppConfig): NoteBuildResul
           ["Register", item.register],
           ["Chunk", item.chunk],
           ["Example", item.example],
-          ["My sentence", item.mySentence]
+          ["My sentence", item.mySentence],
+          ["Mistake", item.mistake],
+          ["Source", item.source]
         ])
       },
       tags: buildNoteTags(item, "production"),
@@ -172,13 +175,26 @@ function buildTypeAnswerNote(item: VocabItem, config: AppConfig): NoteBuildResul
     };
   }
 
+  const contextBlock = buildHtmlBlock([
+    ["Grammar pattern", item.grammarPattern],
+    ["Chunk", item.chunk],
+    ["Example", item.example],
+    ["Synonyms", item.synonyms],
+    ["Antonyms", item.antonyms],
+    ["Word family", item.wordFamily]
+  ]);
+
+  const front = contextBlock
+    ? `${escapeHtml(item.typePrompt)}<br><hr><small>${contextBlock}</small>`
+    : escapeHtml(item.typePrompt);
+
   return {
     ok: true,
     note: {
       deckName: buildDeckName(config, item),
       modelName: "Basic (type in the answer)",
       fields: {
-        Front: escapeHtml(item.typePrompt),
+        Front: front,
         Back: escapeHtml(item.typeAnswer)
       },
       tags: buildNoteTags(item, "type_answer"),
@@ -215,10 +231,20 @@ function buildMistakeFixNote(item: VocabItem, config: AppConfig): NoteBuildResul
           ["Correct expression", item.expression],
           ["Word stress", item.wordStress],
           ["Listen", buildGoogleTranslateLink(item)],
+          ["English meaning", item.englishMeaning],
+          ["Semantics", item.semantics],
+          ["Collocations", item.collocations],
+          ["Synonyms", item.synonyms],
+          ["Antonyms", item.antonyms],
+          ["Word family", item.wordFamily],
+          ["Sound note", item.soundNote],
           ["Grammar pattern", item.grammarPattern],
           ["Register", item.register],
           ["Correct chunk", item.chunk],
-          ["Mistake note", item.mistake]
+          ["Example", item.example],
+          ["My sentence", item.mySentence],
+          ["Mistake note", item.mistake],
+          ["Source", item.source]
         ])
       },
       tags: buildNoteTags(item, "mistake_fix"),

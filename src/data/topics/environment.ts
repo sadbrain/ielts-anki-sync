@@ -2,12 +2,11 @@ import type { VocabSourceItem } from "../../vocab/types";
 
 const environmentDefaults: Pick<
   VocabSourceItem,
-  "topic" | "skill" | "source" | "upsertModes" | "cardModes"
+  "topic" | "skill" | "source" | "cardModes"
 > = {
   topic: "Environment",
   skill: "vocabulary",
   source: "Self Study",
-  upsertModes: ["recognition", "production"],
   cardModes: ["recognition", "production"]
 };
 

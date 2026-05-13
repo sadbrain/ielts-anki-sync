@@ -21,7 +21,7 @@ export function validateVocabItem(raw: unknown): ValidationResult {
   const record = raw as Record<string, unknown>;
   const uid = readRequiredString(record.uid, "uid");
   const cardModes = readCardModes(record.cardModes, "cardModes");
-  const upsertModes = readCardModes(record.upsertModes, "upsertModes", []);
+  const upsertModes = readCardModes(record.upsertModes, "upsertModes", cardModes.valid ? cardModes.value : []);
 
   if (!uid.valid) {
     return uid;
