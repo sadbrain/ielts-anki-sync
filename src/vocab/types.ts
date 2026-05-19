@@ -12,6 +12,7 @@ export type TextListValue = string | string[];
 export interface VocabSourceItem {
   uid: string;
   expression?: string;
+  partOfSpeech?: string;
   wordStress?: string;
   googleTranslateUrl?: string;
   meaningVN?: string;

@@ -1,384 +1,227 @@
 # ielts-anki-sync
 
-CLI TypeScript nhỏ để đồng bộ từ vựng IELTS vào Anki qua AnkiConnect.
+Small TypeScript CLI for syncing IELTS vocabulary data into Anki through AnkiConnect.
 
-## Yêu cầu
+## Requirements
 
 - Node.js 18+
-- Đã cài Anki Desktop
-- Đã cài add-on AnkiConnect trong Anki
-- Phải mở Anki khi chạy lệnh sync
+- Anki Desktop
+- AnkiConnect add-on
+- Anki must be open when running sync
 
-## Cài đặt
+## Install
 
-1. Cài dependency:
+```bash
+npm install
+```
 
-   ```bash
-   npm install
-   ```
+Create `.env` from `.env.example`, then choose what to sync in [src/data/index.ts](./src/data/index.ts).
 
-2. Tạo file `.env` từ `.env.example`.
+## Current Architecture
 
-3. Chỉnh [src/data/index.ts](./src/data/index.ts) để chọn danh sách từ muốn sync.
-4. Thêm hoặc sửa dữ liệu ở:
-   - [src/data/topics](./src/data/topics)
-   - [src/data/scenes](./src/data/scenes)
-   - [src/data/examples/custom-examples.ts](./src/data/examples/custom-examples.ts)
+The project uses TypeScript source data.
 
-## Khai báo dữ liệu ở đâu
+- [src/data/index.ts](./src/data/index.ts): chooses the data list to sync.
+- [src/data/topics](./src/data/topics): topic-based vocabulary files.
+- [src/data/scenes](./src/data/scenes): scene-based vocabulary files.
+- [src/data/examples/custom-examples.ts](./src/data/examples/custom-examples.ts): examples for supported fields and card modes.
+- [src/vocab/types.ts](./src/vocab/types.ts): vocabulary item schema.
+- [src/vocab/validator.ts](./src/vocab/validator.ts): validates and normalizes raw items.
+- [src/anki/noteBuilder.ts](./src/anki/noteBuilder.ts): builds Anki notes for each card mode.
+- [src/anki/ankiClient.ts](./src/anki/ankiClient.ts): calls AnkiConnect.
 
-Tool hiện đọc dữ liệu từ file TypeScript, không dùng JSONL nữa.
+The old `data/vocab.jsonl` is not the active source for normal syncing.
 
-File đầu vào chính:
+## Choosing Data To Sync
 
-- [src/data/index.ts](./src/data/index.ts)
+Edit [src/data/index.ts](./src/data/index.ts):
 
-Thông thường bạn chỉ cần sửa file đó để chọn:
+```ts
+export const vocabItems: VocabSourceItem[] = [
+  ...environmentTopic
+];
+```
 
-- sync theo topic
-- sync theo scene
-- sync một danh sách tự ghép
+You can sync by topic, by scene, or by a mixed list.
 
-## Subdeck theo topic
+## Topic Subdecks
 
-Nếu item có `topic`, note sẽ vào subdeck tương ứng:
+If an item has `topic`, notes are placed under that subdeck:
 
-- deck gốc: `IELTS::Vocabulary`
-- `topic: "Technology"` -> `IELTS::Vocabulary::Technology`
+- root deck: `IELTS::Vocabulary`
+- `topic: "Environment"` -> `IELTS::Vocabulary::Environment`
 - `topic: "Writing::Task 2"` -> `IELTS::Vocabulary::Writing::Task 2`
 
-Nếu không có `topic`, note sẽ vào deck gốc.
+If `topic` is missing, notes go to the root deck.
 
-## Ví dụ tối giản nhất
+## Vocabulary Item Shape
 
-Nếu bạn chỉ muốn một card trước/sau đơn giản thì chỉ cần như này:
+Minimal item:
 
 ```ts
-import type { VocabSourceItem } from "../vocab/types";
-
 export const item: VocabSourceItem = {
-  uid: "word_substantial",
-  expression: "substantial",
-  wordStress: "/səbˈstænʃl/",
-  googleTranslateUrl: "https://translate.google.com/?sl=en&tl=vi&text=substantial&op=translate",
-  meaningVN: "dang ke"
+  uid: "ielts_deforestation",
+  expression: "deforestation",
+  partOfSpeech: "n.",
+  wordStress: "/diːˌfɔːrəˈsteɪʃən/",
+  meaningVN: "phá rừng",
+  topic: "Environment",
+  skill: "vocabulary",
+  source: "Self Study"
 };
 ```
 
-Lý do:
-
-- `cardModes` mặc định là `["recognition"]`
-- `upsertModes` mặc định là `[]`
-- mode `recognition` sẽ tạo:
-  - Front = `expression`
-  - Back = `meaningVN`
-
-## Ví dụ khai báo
-
-Bạn có thể xem bộ ví dụ sẵn ở [src/data/examples/custom-examples.ts](./src/data/examples/custom-examples.ts).
-
-### 1. Chỉ tạo recognition
+Enriched item:
 
 ```ts
-export const item = {
-  uid: "word_feasible",
-  expression: "feasible",
-  meaningVN: "kha thi",
-  cardModes: ["recognition"]
+export const item: VocabSourceItem = {
+  uid: "ielts_environmental_degradation",
+  expression: "environmental degradation",
+  partOfSpeech: "n. phrase",
+  wordStress: "/ɪnˌvaɪrənˈmentl ˌdeɡrəˈdeɪʃən/",
+  meaningVN: "suy thoái môi trường",
+  englishMeaning:
+    "the process in which the environment becomes damaged or worse - quá trình môi trường bị tổn hại hoặc trở nên tệ hơn",
+  synonyms: ["environmental damage (n phrase) - tổn hại môi trường"],
+  antonyms: ["environmental restoration (n phrase) - phục hồi môi trường"],
+  wordFamily: [
+    "degrade (v) - làm suy thoái",
+    "degradation (n) - sự suy thoái",
+    "environment (n) - môi trường",
+    "environmental (adj) - thuộc về môi trường",
+    "environmentally (adv) - một cách liên quan đến môi trường"
+  ],
+  grammarPattern: "tackle + problem/issue - giải quyết + vấn đề",
+  chunk: "tackle environmental degradation - giải quyết suy thoái môi trường",
+  example: "Governments need to tackle environmental degradation.",
+  cloze:
+    "Governments need to {{c1::tackle environmental degradation}}. (Các chính phủ cần giải quyết suy thoái môi trường.)",
+  typePrompt: "tackle ___ degradation",
+  typeAnswer: "environmental",
+  cardModes: ["recognition", "production", "cloze", "type_answer"],
+  upsertModes: ["recognition", "production", "cloze", "type_answer"]
 };
 ```
 
-### 2. Recognition có upsert
+## Field Guide
 
-```ts
-export const item = {
-  uid: "word_feasible",
-  expression: "feasible",
-  meaningVN: "kha thi",
-  cardModes: ["recognition"],
-  upsertModes: ["recognition"]
-};
-```
+- `uid`: required stable unique ID. Do not change after importing unless you want Anki to treat it as a new item.
+- `expression`: English word or phrase.
+- `partOfSpeech`: main part of speech for `expression`, such as `n.`, `v.`, `adj.`, `adv.`, `n. phrase`, `v. phrase`, `prep. phrase`, `sentence frame`.
+- `wordStress`: IPA or pronunciation/stress note.
+- `googleTranslateUrl`: optional listen link. If missing, the tool creates a Google Translate link from `expression`.
+- `meaningVN`: Vietnamese meaning.
+- `englishMeaning`: concise English meaning, optionally with Vietnamese after ` - `.
+- `semantics`: usage note or nuance.
+- `collocations`: useful collocations.
+- `synonyms`: useful synonyms. Prefer entries with POS labels, e.g. `environmental damage (n phrase) - tổn hại môi trường`.
+- `antonyms`: useful opposites. Prefer entries with POS labels.
+- `wordFamily`: useful related forms. Always include POS labels when possible, e.g. `pollute (v) - gây ô nhiễm`.
+- `soundNote`: pronunciation note.
+- `grammarPattern`: grammar pattern for the expression.
+- `register`: style/register, such as `formal`, `neutral`, `academic`.
+- `chunk`: useful phrase or collocation.
+- `example`: example sentence.
+- `mySentence`: personal sentence.
+- `cloze`: must contain `{{c1::...}}` when using `cloze` mode.
+- `mistake`: common mistake note.
+- `typePrompt`: prompt for `type_answer`.
+- `typeAnswer`: answer for `type_answer`.
+- `mistakePrompt`: front side for `mistake_fix`.
+- `topic`: subdeck and tag source.
+- `skill`: tag, such as `writing`, `speaking`, `vocabulary`.
+- `priority`: tag, such as `active`, `review`, `later`.
+- `source`: source label.
+- `cardModes`: cards to create. Defaults to `["recognition"]`.
+- `upsertModes`: existing note modes to update. Defaults to `[]`.
 
-### 3. Chỉ tạo cloze
-
-```ts
-export const item = {
-  uid: "word_vital_role",
-  expression: "play a vital role",
-  meaningVN: "dong vai tro quan trong",
-  cloze: "Teachers {{c1::play a vital role}} in shaping children's habits.",
-  cardModes: ["cloze"]
-};
-```
-
-### 4. Chỉ tạo production
-
-```ts
-export const item = {
-  uid: "word_deteriorate",
-  expression: "deteriorate",
-  meaningVN: "xau di, suy giam",
-  englishMeaning: "to become worse",
-  cardModes: ["production"]
-};
-```
-
-### 5. Chỉ tạo type_answer
-
-```ts
-export const item = {
-  uid: "word_result_in",
-  expression: "result in",
-  meaningVN: "dan den",
-  typePrompt: "result ___ higher costs",
-  typeAnswer: "in",
-  cardModes: ["type_answer"]
-};
-```
-
-### 6. Chỉ tạo mistake_fix
-
-```ts
-export const item = {
-  uid: "word_discuss",
-  expression: "discuss",
-  meaningVN: "thao luan",
-  chunk: "discuss a problem",
-  mistake: "discuss about is incorrect; use discuss directly",
-  mistakePrompt: "We need to discuss about this issue.",
-  cardModes: ["mistake_fix"]
-};
-```
-
-### 7. Một item tạo nhiều mode
-
-```ts
-export const item = {
-  uid: "ielts_rely_on",
-  expression: "rely on",
-  googleTranslateUrl: "https://translate.google.com/?sl=en&tl=vi&text=rely%20on&op=translate",
-  meaningVN: "phu thuoc vao",
-  englishMeaning: "to need or depend on someone or something",
-  semantics: "Use when something depends on another thing to work well.",
-  collocations: ["rely heavily on", "rely mainly on", "rely on technology"],
-  synonyms: ["depend on", "count on"],
-  antonyms: ["be independent of"],
-  wordFamily: ["reliance", "reliable", "unreliable"],
-  soundNote: "Link rely + on smoothly when speaking.",
-  grammarPattern: "rely on + noun/person/thing",
-  register: "neutral",
-  chunk: "rely heavily on technology",
-  example: "Many students rely on online resources.",
-  cloze: "Many students {{c1::rely on}} online resources.",
-  mySentence: "I rely on Anki to review IELTS vocabulary.",
-  mistake: "rely on, not rely to",
-  typePrompt: "rely ___ technology",
-  typeAnswer: "on",
-  mistakePrompt: "Many people rely ___ their phones.",
-  topic: "Technology",
-  skill: "writing",
-  priority: "active",
-  source: "Cambridge Reading",
-  cardModes: ["recognition", "cloze", "production", "type_answer", "mistake_fix"],
-  upsertModes: ["recognition", "production"]
-};
-```
-
-## Giải thích các field
-
-Mỗi object từ vựng có thể có các key sau:
-
-- `uid`
-  - bắt buộc
-  - là ID ổn định, duy nhất cho item
-  - không nên đổi sau khi đã import vào Anki, nếu không tool sẽ coi là item mới
-
-- `expression`
-  - từ hoặc cụm từ tiếng Anh
-  - dùng ở mặt trước của `recognition`
-  - dùng ở mặt sau của `production`
-
-- `wordStress`
-  - phiên âm hoặc trọng âm của từ, không bắt buộc
-  - ví dụ: `/əˈveɪləbl/`
-  - hiển thị ở mặt sau của các card học từ
-
-- `googleTranslateUrl`
-  - link Google Translate để bấm nghe phát âm, không bắt buộc
-  - nếu không khai báo, tool sẽ tự tạo link từ `expression`
-  - ví dụ: `https://translate.google.com/?sl=en&tl=vi&text=available&op=translate`
-
-- `meaningVN`
-  - nghĩa tiếng Việt
-  - dùng ở mặt sau của `recognition`
-  - dùng ở mặt trước của `production`
-
-- `englishMeaning`
-  - nghĩa tiếng Anh, không bắt buộc
-  - dùng thêm trong `production` và `cloze`
-
-- `semantics`
-  - ghi chú về sắc thái nghĩa/cách dùng, không bắt buộc
-  - ví dụ: khi nào nên dùng từ này, khác gì với từ gần nghĩa
-
-- `collocations`
-  - các cụm hay đi với từ, không bắt buộc
-  - có thể khai báo string hoặc array string
-  - ví dụ: `["readily available", "widely available"]`
-
-- `synonyms`
-  - từ/cụm đồng nghĩa, không bắt buộc
-  - có thể khai báo string hoặc array string
-
-- `antonyms`
-  - từ/cụm trái nghĩa, không bắt buộc
-  - có thể khai báo string hoặc array string
-
-- `wordFamily`
-  - họ từ, không bắt buộc
-  - có thể khai báo string hoặc array string
-  - ví dụ: `["availability", "unavailable"]`
-
-- `soundNote`
-  - ghi chú phát âm, nối âm, âm dễ sai, không bắt buộc
-  - ví dụ: `Stress is on the second syllable.`
-
-- `grammarPattern`
-  - pattern ngữ pháp/cấu trúc đi với từ, không bắt buộc
-  - ví dụ: `available to someone; available for something`
-
-- `register`
-  - sắc thái văn phong, không bắt buộc
-  - ví dụ: `formal`, `neutral`, `informal`, `academic`
-  - tool cũng tạo tag từ field này
-
-- `chunk`
-  - cụm hoặc collocation, không bắt buộc
-  - hiển thị ở mặt sau của card
-
-- `example`
-  - câu ví dụ, không bắt buộc
-  - hiển thị ở mặt sau của card
-
-- `mySentence`
-  - câu tự đặt, không bắt buộc
-  - hiển thị ở back của `recognition`, `cloze`, `production`
-
-- `cloze`
-  - câu cloze, không bắt buộc
-  - phải chứa mẫu `{{c1::...}}`
-  - bắt buộc nếu dùng mode `cloze`
-
-- `mistake`
-  - ghi chú lỗi hay nhầm, không bắt buộc
-  - dùng trong `recognition`, `cloze`, `mistake_fix`
-
-- `typePrompt`
-  - câu hỏi cho mode `type_answer`
-  - ví dụ: `rely ___ technology`
-
-- `typeAnswer`
-  - đáp án cho mode `type_answer`
-  - ví dụ: `on`
-
-- `mistakePrompt`
-  - mặt trước tùy chỉnh cho mode `mistake_fix`
-  - nếu không có, tool sẽ tự tạo prompt đơn giản từ `mistake`
-
-- `topic`
-  - nhãn nhóm deck, không bắt buộc
-  - dùng để tạo subdeck
-  - có thể lồng nhiều cấp bằng `::`
-  - tool cũng tạo tag từ field này
-
-- `skill`
-  - tag, không bắt buộc
-  - ví dụ: `writing`, `speaking`
-
-- `priority`
-  - tag, không bắt buộc
-  - ví dụ: `active`, `review`, `later`
-
-- `source`
-  - tag và text hiển thị ở một số card back
-  - ví dụ: `Cambridge Reading`
-
-- `cardModes`
-  - mảng mode, không bắt buộc
-  - các giá trị hỗ trợ:
-    - `recognition`
-    - `cloze`
-    - `production`
-    - `type_answer`
-    - `mistake_fix`
-  - mặc định: `["recognition"]`
-
-- `upsertModes`
-  - mảng mode, không bắt buộc
-  - mode nào nằm trong đây thì khi note đã tồn tại, tool sẽ update
-  - mode nào không có trong đây thì nếu đã tồn tại sẽ skip
-  - mặc định: `[]`
-
-## Mỗi mode tạo gì
+## Card Modes
 
 - `recognition`
-  - note type: `Basic`
-  - Front = `expression`
-  - Back = `meaningVN`, `wordStress`, link Google Translate, `semantics`, `collocations`, `synonyms`, `antonyms`, `wordFamily`, `soundNote`, `grammarPattern`, `register`, `chunk`, `example`, `mySentence`, `mistake`, `source`
-
-- `cloze`
-  - note type: `Cloze`
-  - Text = `cloze`
-  - Back Extra = `meaningVN`, `wordStress`, link Google Translate, `englishMeaning`, `semantics`, `collocations`, `synonyms`, `antonyms`, `wordFamily`, `soundNote`, `grammarPattern`, `register`, `chunk`, `example`, `mySentence`, `mistake`, `source`
+  - Note type: `Basic`
+  - Front: `expression`
+  - Back: meaning, English meaning, part of speech, word stress, listen link, semantics, collocations, synonyms, antonyms, word family, grammar, example, etc.
 
 - `production`
-  - note type: `Basic`
-  - Front = `meaningVN` + `englishMeaning` nếu có
-  - Back = `expression`, `wordStress`, link Google Translate, `semantics`, `collocations`, `synonyms`, `antonyms`, `wordFamily`, `soundNote`, `grammarPattern`, `register`, `chunk`, `example`, `mySentence`
+  - Note type: `Basic`
+  - Front: `meaningVN` plus `englishMeaning` if present
+  - Back: `expression` plus learning details.
+
+- `cloze`
+  - Note type: `Cloze`
+  - Text: `cloze`
+  - Back Extra: learning details.
 
 - `type_answer`
-  - note type: `Basic (type in the answer)`
-  - Front = `typePrompt`
-  - Back = `typeAnswer`
+  - Note type: `Basic (type in the answer)`
+  - Front: `typePrompt`
+  - Back: `typeAnswer`
 
 - `mistake_fix`
-  - note type: `Basic`
-  - Front = `mistakePrompt`, hoặc prompt tự sinh từ `mistake`
-  - Back = `expression` hoặc `chunk` đúng, `wordStress`, link Google Translate, `grammarPattern`, `register`, và ghi chú `mistake`
+  - Note type: `Basic`
+  - Front: `mistakePrompt` or generated prompt from `mistake`
+  - Back: corrected expression/chunk and learning details.
+
+## Data Style For Topic Work
+
+When adding or enriching a topic:
+
+- Keep each vocabulary entry as one item.
+- Do not create separate items only for synonym, antonym, or word family explanations.
+- Put useful synonyms, antonyms, and word family inside the main item.
+- Add POS labels inside list entries:
+  - `environment (n) - môi trường`
+  - `environmental (adj) - thuộc về môi trường`
+  - `environmentally (adv) - một cách liên quan đến môi trường`
+  - `threaten (v) - đe dọa`
+  - `pressing environmental problem (n phrase) - vấn đề môi trường cấp bách`
+- Keep details useful but not overwhelming.
+- Add `type_answer` only for patterns worth drilling, usually prepositions or fixed frames.
+- Use natural IELTS Writing Task 2 examples.
+- Avoid duplicate UIDs.
 
 ## Commands
 
-- `npm run dev`
-- `npm run build`
-- `npm start`
+```bash
+npm run build
+npm run dev
+npm start
+```
 
-## Chạy sync
+On Windows PowerShell, use `npm.cmd` if script execution blocks `npm`:
+
+```powershell
+npm.cmd run build
+npm.cmd run dev
+```
+
+## Sync Behavior
+
+Running sync:
 
 ```bash
 npm run dev
 ```
 
-Tool sẽ:
+The tool:
 
-- đọc dữ liệu từ `src/data/index.ts`
-- validate từng item
-- tạo một hoặc nhiều note theo `cardModes`
-- mặc định dùng `recognition` nếu `cardModes` thiếu hoặc rỗng
-- mặc định không upsert nếu `upsertModes` thiếu hoặc rỗng
-- chỉ update những mode có trong `upsertModes`
-- bỏ qua mode nếu thiếu field cần thiết
-- bỏ qua note đã tồn tại nếu mode đó không được upsert
-- không bao giờ xóa note khỏi Anki
+- reads data from `src/data/index.ts`
+- validates each item
+- creates notes for every requested `cardModes`
+- uses `recognition` if `cardModes` is missing or empty
+- skips a card mode if required fields are missing
+- checks existing notes by UID/mode tags
+- updates only modes listed in `upsertModes`
+- skips existing notes for modes not listed in `upsertModes`
+- never deletes notes from Anki
 
-## Cấu hình Anki
+## Anki Setup
 
-- deck gốc: `IELTS::Vocabulary`
-- note type đang dùng:
+- Root deck: `IELTS::Vocabulary`
+- Note types:
   - `Basic`
   - `Cloze`
   - `Basic (type in the answer)`
 
-## Sau khi import
+After importing, sync Anki Desktop with AnkiWeb manually if you want cloud sync.
 
-Bạn cần tự bấm sync Anki Desktop với AnkiWeb nếu muốn đẩy dữ liệu lên cloud.

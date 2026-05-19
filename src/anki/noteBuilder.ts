@@ -57,6 +57,7 @@ function buildRecognitionNote(item: VocabItem, config: AppConfig): NoteBuildResu
         Back: buildHtmlBlock([
           ["Meaning VN", item.meaningVN],
           ["English meaning", item.englishMeaning],
+          ["Part of speech", item.partOfSpeech],
           ["Word stress", item.wordStress],
           ["Listen", buildGoogleTranslateLink(item)],
           ["Semantics", item.semantics],
@@ -102,6 +103,7 @@ function buildClozeNote(item: VocabItem, config: AppConfig): NoteBuildResult {
           ["Word stress", item.wordStress],
           ["Listen", buildGoogleTranslateLink(item)],
           ["English meaning", item.englishMeaning],
+          ["Part of speech", item.partOfSpeech],
           ["Semantics", item.semantics],
           ["Collocations", item.collocations],
           ["Synonyms", item.synonyms],
@@ -142,6 +144,7 @@ function buildProductionNote(item: VocabItem, config: AppConfig): NoteBuildResul
         Front: buildStackedText(item.meaningVN, item.englishMeaning),
         Back: buildHtmlBlock([
           ["Expression", item.expression],
+          ["Part of speech", item.partOfSpeech],
           ["Word stress", item.wordStress],
           ["Listen", buildGoogleTranslateLink(item)],
           ["Semantics", item.semantics],
@@ -177,6 +180,7 @@ function buildTypeAnswerNote(item: VocabItem, config: AppConfig): NoteBuildResul
 
   const contextBlock = buildHtmlBlock([
     ["Grammar pattern", item.grammarPattern],
+    ["Part of speech", item.partOfSpeech],
     ["Chunk", item.chunk],
     ["Example", item.example],
     ["Synonyms", item.synonyms],
@@ -229,6 +233,7 @@ function buildMistakeFixNote(item: VocabItem, config: AppConfig): NoteBuildResul
         Front: escapeHtml(item.mistakePrompt || `Fix this mistake: ${item.mistake}`),
         Back: buildHtmlBlock([
           ["Correct expression", item.expression],
+          ["Part of speech", item.partOfSpeech],
           ["Word stress", item.wordStress],
           ["Listen", buildGoogleTranslateLink(item)],
           ["English meaning", item.englishMeaning],

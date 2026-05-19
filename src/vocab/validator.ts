@@ -40,6 +40,7 @@ export function validateVocabItem(raw: unknown): ValidationResult {
     item: {
       uid: uid.value,
       expression: readOptionalString(record.expression) ?? readOptionalString(record.word),
+      partOfSpeech: readOptionalString(record.partOfSpeech),
       wordStress: readOptionalString(record.wordStress),
       googleTranslateUrl: readOptionalString(record.googleTranslateUrl),
       meaningVN: readOptionalString(record.meaningVN) ?? readOptionalString(record.meaning),
