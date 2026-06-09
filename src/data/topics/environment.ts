@@ -1154,5 +1154,647 @@ export const environmentTopic: VocabSourceItem[] = [
     typePrompt: "various factors leading ___ global warming",
     typeAnswer: "to",
     cardModes: ["recognition", "production", "cloze", "type_answer"]
-  }
+  },
+  {
+    ...environmentDefaults,
+    expression: "rapid changes in weather patterns",
+    uid: "ielts_rapid_changes_in_weather_patterns",
+    partOfSpeech: "n. phrase",
+    wordStress: "/ˈræpɪd ˈtʃeɪndʒɪz ɪn ˈweðər ˈpætərnz/",
+    meaningVN: "những thay đổi nhanh chóng trong các kiểu hình thời tiết",
+    englishMeaning:
+      "quick shifts in usual weather conditions over time - những sự thay đổi nhanh trong điều kiện thời tiết thường thấy theo thời gian",
+    synonyms: ["unstable weather patterns (n phrase) - các kiểu hình thời tiết không ổn định"],
+    antonyms: ["stable weather patterns (n phrase) - các kiểu hình thời tiết ổn định"],
+    wordFamily: [
+      "rapid (adj) - nhanh chóng",
+      "rapidly (adv) - một cách nhanh chóng",
+      "change (n/v) - sự thay đổi / thay đổi",
+      "weather (n) - thời tiết",
+      "pattern (n) - kiểu hình / quy luật"
+    ],
+    grammarPattern: "changes in + noun - những thay đổi trong + danh từ",
+    chunk: "rapid changes in weather patterns - những thay đổi nhanh chóng trong các kiểu hình thời tiết",
+    example:
+      "Rapid changes in weather patterns are posing a serious threat to humans and putting many animal species in danger of extinction.",
+    cloze:
+      "{{c1::Rapid changes in weather patterns}} can put many animal species in danger of extinction. (Những thay đổi nhanh chóng trong các kiểu hình thời tiết có thể đẩy nhiều loài động vật vào nguy cơ tuyệt chủng.)",
+    typePrompt: "changes ___ weather patterns (những thay đổi ___ các kiểu hình thời tiết)",
+    typeAnswer: "in",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_put_in_danger_of_extinction",
+    expression: "put ... in danger of extinction",
+    partOfSpeech: "v. phrase",
+    wordStress: "/pʊt ɪn ˈdeɪndʒər əv ɪkˈstɪŋkʃən/",
+    meaningVN: "đẩy ... vào nguy cơ tuyệt chủng",
+    englishMeaning:
+      "to make a species more likely to disappear completely - khiến một loài có nguy cơ biến mất hoàn toàn cao hơn",
+    synonyms: ["endanger a species (v phrase) - gây nguy hiểm cho một loài"],
+    antonyms: ["protect a species from extinction (v phrase) - bảo vệ một loài khỏi nguy cơ tuyệt chủng"],
+    wordFamily: [
+      "danger (n) - sự nguy hiểm",
+      "endanger (v) - gây nguy hiểm cho",
+      "extinct (adj) - tuyệt chủng",
+      "extinction (n) - sự tuyệt chủng"
+    ],
+    grammarPattern: "put + noun + in danger of extinction - đẩy + danh từ + vào nguy cơ tuyệt chủng",
+    example:
+      "Rapid changes in weather patterns can put many animal species in danger of extinction.",
+    cloze:
+      "Climate change can {{c1::put many animal species in danger of extinction}}. (Biến đổi khí hậu có thể đẩy nhiều loài động vật vào nguy cơ tuyệt chủng.)",
+    typePrompt: "put many animal species ___ danger of extinction",
+    typeAnswer: "in",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_environmental_protection_programmes",
+    expression: "environmental protection programmes",
+    partOfSpeech: "n. phrase",
+    wordStress: "/ɪnˌvaɪrənˈmentl prəˈtekʃən ˈprəʊɡræmz/",
+    meaningVN: "các chương trình bảo vệ môi trường",
+    englishMeaning:
+      "organised activities designed to protect nature and reduce environmental damage - các hoạt động có tổ chức nhằm bảo vệ thiên nhiên và giảm tổn hại môi trường",
+    synonyms: ["conservation programmes (n phrase) - các chương trình bảo tồn"],
+    wordFamily: [
+      "environment (n) - môi trường",
+      "environmental (adj) - thuộc về môi trường",
+      "protect (v) - bảo vệ",
+      "protection (n) - sự bảo vệ",
+      "programme (n) - chương trình"
+    ],
+    chunk: "engage in environmental protection programmes - tham gia các chương trình bảo vệ môi trường",
+    example:
+      "Another solution would be to engage in environmental protection programmes, such as community planting or energy conservation.",
+    cloze:
+      "Students should engage in {{c1::environmental protection programmes}}. (Học sinh nên tham gia các chương trình bảo vệ môi trường.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_engage_in_something",
+    expression: "engage in something",
+    partOfSpeech: "v. phrase",
+    wordStress: "/ɪnˈɡeɪdʒ ɪn ˈsʌmθɪŋ/",
+    meaningVN: "tham gia vào điều gì đó",
+    synonyms: [
+      "take part in something (v phrase) - tham gia vào điều gì đó",
+      "participate in something (v phrase) - tham gia vào điều gì đó"
+    ],
+    wordFamily: [
+      "engage (v) - tham gia / thu hút",
+      "engagement (n) - sự tham gia",
+      "participant (n) - người tham gia"
+    ],
+    grammarPattern: "engage in + activity - tham gia vào + hoạt động",
+    example: "Local residents can engage in community planting to improve their neighbourhood.",
+    cloze:
+      "Local residents can {{c1::engage in}} community planting. (Người dân địa phương có thể tham gia trồng cây cộng đồng.)",
+    typePrompt: "engage ___ environmental protection programmes",
+    typeAnswer: "in",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_community_planting",
+    expression: "community planting",
+    partOfSpeech: "n. phrase",
+    wordStress: "/kəˈmjuːnəti ˈplɑːntɪŋ/",
+    meaningVN: "hoạt động trồng cây cộng đồng",
+    englishMeaning:
+      "tree-planting activities carried out by local people - hoạt động trồng cây do người dân địa phương cùng thực hiện",
+    wordFamily: [
+      "community (n) - cộng đồng",
+      "plant (v/n) - trồng / cây",
+      "planting (n) - việc trồng cây"
+    ],
+    chunk: "community planting in urban areas - hoạt động trồng cây cộng đồng ở khu vực đô thị",
+    example: "Community planting can make cities greener and improve local air quality.",
+    cloze:
+      "{{c1::Community planting}} can make cities greener. (Hoạt động trồng cây cộng đồng có thể làm cho thành phố xanh hơn.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_energy_conservation",
+    expression: "energy conservation",
+    partOfSpeech: "n. phrase",
+    wordStress: "/ˈenədʒi ˌkɒnsəˈveɪʃən/",
+    meaningVN: "tiết kiệm / bảo tồn năng lượng",
+    englishMeaning:
+      "the practice of using less energy and avoiding waste - việc sử dụng ít năng lượng hơn và tránh lãng phí",
+    synonyms: ["energy saving (n phrase) - tiết kiệm năng lượng"],
+    antonyms: ["energy waste (n phrase) - lãng phí năng lượng"],
+    wordFamily: [
+      "energy (n) - năng lượng",
+      "conserve (v) - bảo tồn / tiết kiệm",
+      "conservation (n) - sự bảo tồn / tiết kiệm"
+    ],
+    chunk: "promote energy conservation - thúc đẩy tiết kiệm năng lượng",
+    example: "Energy conservation can reduce household bills and lower greenhouse gas emissions.",
+    cloze:
+      "{{c1::Energy conservation}} can lower greenhouse gas emissions. (Tiết kiệm năng lượng có thể giảm khí thải nhà kính.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_environmentally_friendly_energy_sources",
+    expression: "environmentally friendly energy sources",
+    partOfSpeech: "n. phrase",
+    wordStress: "/ɪnˌvaɪrənˈmentəli ˈfrendli ˈenədʒi ˈsɔːsɪz/",
+    meaningVN: "các nguồn năng lượng thân thiện với môi trường",
+    englishMeaning:
+      "energy sources that cause little harm to the environment - các nguồn năng lượng gây ít tổn hại cho môi trường",
+    synonyms: ["clean energy sources (n phrase) - các nguồn năng lượng sạch"],
+    antonyms: ["polluting energy sources (n phrase) - các nguồn năng lượng gây ô nhiễm"],
+    wordFamily: [
+      "environment (n) - môi trường",
+      "environmental (adj) - thuộc về môi trường",
+      "environmentally (adv) - theo cách thân thiện/liên quan đến môi trường",
+      "energy (n) - năng lượng",
+      "source (n) - nguồn"
+    ],
+    chunk: "use environmentally friendly energy sources - sử dụng các nguồn năng lượng thân thiện với môi trường",
+    example:
+      "Governments should encourage the use of environmentally friendly energy sources, such as nuclear or renewable power, in order to reduce our reliance on fossil fuels and decrease greenhouse gas emissions.",
+    cloze:
+      "Governments should encourage the use of {{c1::environmentally friendly energy sources}}. (Các chính phủ nên khuyến khích sử dụng các nguồn năng lượng thân thiện với môi trường.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_nuclear_or_renewable_power",
+    expression: "nuclear or renewable power",
+    partOfSpeech: "n. phrase",
+    wordStress: "/ˈnjuːkliər ɔːr rɪˈnjuːəbl ˈpaʊər/",
+    meaningVN: "năng lượng hạt nhân hoặc năng lượng tái tạo",
+    englishMeaning:
+      "energy produced from nuclear reactions or naturally replenished sources - năng lượng được tạo ra từ phản ứng hạt nhân hoặc các nguồn tự nhiên có thể tái tạo",
+    wordFamily: [
+      "nuclear (adj) - thuộc về hạt nhân",
+      "renew (v) - làm mới / tái tạo",
+      "renewable (adj) - có thể tái tạo",
+      "power (n) - năng lượng / điện năng"
+    ],
+    chunk: "invest in nuclear or renewable power - đầu tư vào năng lượng hạt nhân hoặc năng lượng tái tạo",
+    example: "Some countries invest in nuclear or renewable power to reduce their dependence on fossil fuels.",
+    cloze:
+      "Some countries invest in {{c1::nuclear or renewable power}}. (Một số quốc gia đầu tư vào năng lượng hạt nhân hoặc năng lượng tái tạo.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_encourage_the_use_of_something",
+    expression: "encourage the use of something",
+    partOfSpeech: "v. phrase",
+    wordStress: "/ɪnˈkʌrɪdʒ ðə juːs əv ˈsʌmθɪŋ/",
+    meaningVN: "khuyến khích việc sử dụng điều gì đó",
+    grammarPattern: "encourage the use of + noun - khuyến khích việc sử dụng + danh từ",
+    synonyms: ["promote the use of something (v phrase) - thúc đẩy việc sử dụng điều gì đó"],
+    antonyms: ["discourage the use of something (v phrase) - không khuyến khích việc sử dụng điều gì đó"],
+    wordFamily: [
+      "encourage (v) - khuyến khích",
+      "encouragement (n) - sự khuyến khích",
+      "use (n/v) - việc sử dụng / sử dụng"
+    ],
+    example: "Governments should encourage the use of environmentally friendly energy sources.",
+    cloze:
+      "Governments should {{c1::encourage the use of}} renewable energy. (Các chính phủ nên khuyến khích việc sử dụng năng lượng tái tạo.)",
+    typePrompt: "encourage the use ___ renewable energy",
+    typeAnswer: "of",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_reduce_our_reliance_on_fossil_fuels",
+    expression: "reduce our reliance on fossil fuels",
+    partOfSpeech: "v. phrase",
+    wordStress: "/rɪˈduːs aʊər rɪˈlaɪəns ɒn ˈfɒsəl ˈfjuːəlz/",
+    meaningVN: "giảm sự phụ thuộc của chúng ta vào nhiên liệu hóa thạch",
+    grammarPattern: "reduce reliance on + noun - giảm sự phụ thuộc vào + danh từ",
+    synonyms: ["reduce dependence on fossil fuels (v phrase) - giảm sự phụ thuộc vào nhiên liệu hóa thạch"],
+    antonyms: ["increase reliance on fossil fuels (v phrase) - tăng sự phụ thuộc vào nhiên liệu hóa thạch"],
+    wordFamily: [
+      "reduce (v) - giảm",
+      "reduction (n) - sự giảm",
+      "rely on (v phrase) - phụ thuộc vào",
+      "reliance (n) - sự phụ thuộc",
+      "fossil fuel (n) - nhiên liệu hóa thạch"
+    ],
+    example:
+      "Countries should invest in clean energy in order to reduce their reliance on fossil fuels.",
+    cloze:
+      "Clean energy can help countries {{c1::reduce their reliance on fossil fuels}}. (Năng lượng sạch có thể giúp các quốc gia giảm sự phụ thuộc vào nhiên liệu hóa thạch.)",
+    typePrompt: "reduce our reliance ___ fossil fuels",
+    typeAnswer: "on",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_wipe_out_life_on_earth",
+    expression: "to wipe out life on Earth",
+    partOfSpeech: "v. phrase",
+    wordStress: "/waɪp aʊt laɪf ɑːn ɝːθ/",
+    meaningVN: "xóa sổ sự sống trên Trái Đất",
+    englishMeaning:
+      "to completely destroy all life on Earth - phá hủy hoàn toàn sự sống trên Trái Đất",
+    grammarPattern:
+      "wipe out + noun / be wiped out - xóa sổ + danh từ / bị xóa sổ",
+    synonyms: [
+      "destroy life on Earth (v phrase) - phá hủy sự sống trên Trái Đất",
+      "eradicate life on Earth (v phrase) - xóa bỏ hoàn toàn sự sống trên Trái Đất"
+    ],
+    antonyms: [
+      "preserve life on Earth (v phrase) - bảo tồn sự sống trên Trái Đất"
+    ],
+    wordFamily: [
+      "wipe out (v phrase) - xóa sổ / tiêu diệt hoàn toàn",
+      "be wiped out (passive v. phrase) - bị xóa sổ",
+      "life (n) - sự sống",
+      "Earth (n) - Trái Đất"
+    ],
+    chunk: "wipe out life on Earth - xóa sổ sự sống trên Trái Đất",
+    example:
+      "Unchecked environmental degradation could wipe out life on Earth in the long run.",
+    cloze:
+      "Unchecked environmental degradation could {{c1::wipe out life on Earth}} in the long run. (Suy thoái môi trường không được kiểm soát có thể xóa sổ sự sống trên Trái Đất về lâu dài.)",
+    typePrompt: "wipe ___ life on Earth (xóa sổ sự sống trên Trái Đất)",
+    typeAnswer: "out",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_do_nothing_to_tackle_serious_environmental_issues",
+    expression: "do nothing to tackle these serious environmental issues",
+    partOfSpeech: "v. phrase",
+    wordStress: "/duː ˈnʌθɪŋ tə ˈtækl ðiːz ˈsɪəriəs ɪnˌvaɪrənˈmentl ˈɪʃuːz/",
+    meaningVN: "không có gì để giải quyết những vấn đề môi trường nghiêm trọng này",
+    englishMeaning:
+      "to take no action to deal with major environmental problems - không hành động để xử lý các vấn đề môi trường lớn",
+    grammarPattern:
+      "do nothing to tackle + problem/issue - không làm gì để giải quyết + vấn đề",
+    synonyms: [
+      "fail to address serious environmental issues (v phrase) - không giải quyết các vấn đề môi trường nghiêm trọng"
+    ],
+    antonyms: [
+      "take action to address serious environmental issues (v phrase) - hành động để xử lý các vấn đề môi trường nghiêm trọng"
+    ],
+    wordFamily: [
+      "tackle (v) - giải quyết / xử lý",
+      "issue (n) - vấn đề",
+      "serious (adj) - nghiêm trọng",
+      "environmental (adj) - thuộc về môi trường"
+    ],
+    chunk:
+      "do nothing to tackle serious environmental issues - không làm gì để giải quyết các vấn đề môi trường nghiêm trọng",
+    example:
+      "If governments do nothing to tackle these serious environmental issues, life on Earth could be put at serious risk.",
+    cloze:
+      "If governments {{c1::do nothing to tackle these serious environmental issues}}, life on Earth could be put at serious risk. (Nếu các chính phủ không làm gì để giải quyết những vấn đề môi trường nghiêm trọng này, sự sống trên Trái Đất có thể gặp rủi ro lớn.)",
+    typePrompt:
+      "do nothing ___ tackle these serious environmental issues",
+    typeAnswer: "to",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_raise_public_awareness_of",
+    expression: "to raise public awareness of",
+    partOfSpeech: "v. phrase",
+    wordStress: "/reɪz ˈpʌblɪk əˈweənəs əv/",
+    meaningVN: "nâng cao nhận thức cộng đồng về",
+    englishMeaning:
+      "to help more people understand and care about an issue - giúp nhiều người hiểu và quan tâm hơn đến một vấn đề",
+    grammarPattern:
+      "raise public awareness of/about + noun - nâng cao nhận thức cộng đồng về + danh từ",
+    synonyms: [
+      "increase public understanding of something (v phrase) - tăng hiểu biết của công chúng về điều gì đó"
+    ],
+    wordFamily: [
+      "raise (v) - nâng cao",
+      "public (adj/n) - công cộng / công chúng",
+      "aware (adj) - nhận thức được",
+      "awareness (n) - nhận thức"
+    ],
+    chunk:
+      "raise public awareness of environmental degradation - nâng cao nhận thức cộng đồng về suy thoái môi trường",
+    example:
+      "It is necessary to raise public awareness of the serious consequences of environmental degradation.",
+    cloze:
+      "It is necessary to {{c1::raise public awareness of}} environmental degradation. (Cần nâng cao nhận thức cộng đồng về suy thoái môi trường.)",
+    typePrompt: "raise public awareness ___ environmental degradation",
+    typeAnswer: "of",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_serious_consequences_of_environmental_degradation",
+    expression: "the serious consequences of environmental degradation",
+    partOfSpeech: "n. phrase",
+    wordStress:
+      "/ðə ˈsɪəriəs ˈkɑːnsəkwensɪz əv ɪnˌvaɪrənˈmentl ˌdeɡrəˈdeɪʃən/",
+    meaningVN: "những hậu quả nghiêm trọng của sự suy thoái môi trường",
+    englishMeaning:
+      "the severe negative results caused by environmental damage - những kết quả tiêu cực nghiêm trọng do tổn hại môi trường gây ra",
+    synonyms: [
+      "severe effects of environmental degradation (n phrase) - các tác động nghiêm trọng của suy thoái môi trường"
+    ],
+    wordFamily: [
+      "consequence (n) - hậu quả",
+      "serious (adj) - nghiêm trọng",
+      "environmental (adj) - thuộc về môi trường",
+      "degradation (n) - sự suy thoái"
+    ],
+    grammarPattern:
+      "the consequences of + noun - hậu quả của + danh từ",
+    chunk:
+      "raise awareness of the serious consequences of environmental degradation - nâng cao nhận thức về hậu quả nghiêm trọng của suy thoái môi trường",
+    example:
+      "It is necessary to raise public awareness of the serious consequences of environmental degradation.",
+    cloze:
+      "People should understand {{c1::the serious consequences of environmental degradation}}. (Mọi người nên hiểu những hậu quả nghiêm trọng của suy thoái môi trường.)",
+    typePrompt: "the serious consequences ___ environmental degradation",
+    typeAnswer: "of",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_it_is_necessary_to_do_something",
+    expression: "it is necessary to do something",
+    partOfSpeech: "sentence frame",
+    wordStress: "/ɪt ɪz ˈnesəseri tə duː ˈsʌmθɪŋ/",
+    meaningVN: "cần thiết phải làm điều gì đó",
+    grammarPattern:
+      "It is necessary to + verb - cần thiết phải + động từ",
+    synonyms: [
+      "it is essential to do something (sentence frame) - điều gì đó là thiết yếu",
+      "there is a need to do something (sentence frame) - có nhu cầu cần làm điều gì đó"
+    ],
+    antonyms: [
+      "it is unnecessary to do something (sentence frame) - không cần thiết phải làm điều gì đó"
+    ],
+    chunk:
+      "it is necessary to raise public awareness - cần thiết phải nâng cao nhận thức cộng đồng",
+    example:
+      "It is necessary to raise public awareness of the serious consequences of environmental degradation.",
+    cloze:
+      "{{c1::It is necessary to}} raise public awareness of environmental degradation. (Cần thiết phải nâng cao nhận thức cộng đồng về suy thoái môi trường.)",
+    typePrompt: "It is necessary ___ raise public awareness.",
+    typeAnswer: "to",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_put_heavy_pressure_on",
+    expression: "put heavy pressure on",
+    partOfSpeech: "v. phrase",
+    wordStress: "/pʊt ˈhevi ˈpreʃər ɑːn/",
+    meaningVN: "gây áp lực nặng nề lên",
+    englishMeaning:
+      "to create a lot of stress or strain for someone or something - gây nhiều áp lực hoặc gánh nặng lên ai/cái gì",
+    grammarPattern:
+      "put heavy pressure on + noun - gây áp lực nặng nề lên + danh từ",
+    synonyms: [
+      "place considerable strain on something (v phrase) - tạo áp lực lớn lên điều gì đó"
+    ],
+    antonyms: [
+      "relieve pressure on something (v phrase) - giảm áp lực lên điều gì đó"
+    ],
+    wordFamily: [
+      "pressure (n/v) - áp lực / gây áp lực",
+      "pressing (adj) - cấp bách",
+      "heavy (adj) - nặng nề",
+      "heavily (adv) - một cách nặng nề"
+    ],
+    chunk:
+      "put heavy pressure on marine ecosystems - gây áp lực nặng nề lên các hệ sinh thái biển",
+    example: 
+      "Overfishing and water pollution are putting heavy pressure on marine ecosystems, posing a serious threat to thousands of marine creatures.",
+    cloze:
+      "Overfishing and water pollution are {{c1::putting heavy pressure on}} marine ecosystems. (Khai thác cá quá mức và ô nhiễm nước đang gây áp lực nặng nề lên các hệ sinh thái biển.)",
+    typePrompt: "put heavy pressure ___ marine ecosystems",
+    typeAnswer: "on",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_marine_ecosystems",
+    expression: "marine ecosystems",
+    partOfSpeech: "n. phrase",
+    wordStress: "/məˈriːn ˈiːkoʊsɪstəmz/",
+    meaningVN: "các hệ sinh thái biển",
+    englishMeaning:
+      "communities of living things and their environment in the ocean - các cộng đồng sinh vật và môi trường của chúng trong đại dương",
+    synonyms: [
+      "ocean ecosystems (n phrase) - các hệ sinh thái đại dương"
+    ],
+    wordFamily: [
+      "marine (adj) - thuộc về biển",
+      "ecosystem (n) - hệ sinh thái",
+      "ecology (n) - sinh thái học",
+      "ecological (adj) - thuộc về sinh thái"
+    ],
+    chunk:
+      "protect marine ecosystems - bảo vệ các hệ sinh thái biển",
+    example:
+      "Protecting marine ecosystems is essential for maintaining biodiversity and food security.",
+    cloze:
+      "Pollution can damage {{c1::marine ecosystems}}. (Ô nhiễm có thể phá hủy các hệ sinh thái biển.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_overfishing",
+    expression: "overfishing",
+    partOfSpeech: "n.",
+    wordStress: "/ˌoʊvərˈfɪʃɪŋ/",
+    meaningVN: "khai thác cá quá mức",
+    englishMeaning:
+      "the practice of catching too many fish, so fish populations cannot recover - việc đánh bắt quá nhiều cá khiến quần thể cá không thể phục hồi",
+    synonyms: [
+      "excessive fishing (n phrase) - đánh bắt cá quá mức"
+    ],
+    antonyms: [
+      "sustainable fishing (n phrase) - đánh bắt cá bền vững"
+    ],
+    wordFamily: [
+      "fish (n/v) - cá / đánh bắt cá",
+      "fishing (n) - hoạt động đánh bắt cá",
+      "overfish (v) - đánh bắt quá mức"
+    ],
+    chunk:
+      "overfishing in coastal areas - khai thác cá quá mức ở các khu vực ven biển",
+    example:
+      "Overfishing can reduce fish stocks and damage the balance of marine ecosystems.",
+    cloze:
+      "{{c1::Overfishing}} can damage the balance of marine ecosystems. (Khai thác cá quá mức có thể phá vỡ sự cân bằng của các hệ sinh thái biển.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_thousands_of_marine_creatures",
+    expression: "thousands of marine creatures",
+    partOfSpeech: "n. phrase",
+    wordStress: "/ˈθaʊzəndz əv məˈriːn ˈkriːtʃərz/",
+    meaningVN: "hàng ngàn sinh vật biển",
+    englishMeaning:
+      "a very large number of animals that live in the sea - một số lượng rất lớn các loài sống ở biển",
+    synonyms: [
+      "many marine animals (n phrase) - nhiều loài động vật biển"
+    ],
+    wordFamily: [
+      "thousand (n) - một nghìn",
+      "marine (adj) - thuộc về biển",
+      "creature (n) - sinh vật"
+    ],
+    chunk:
+      "pose a serious threat to thousands of marine creatures - đe dọa nghiêm trọng hàng ngàn sinh vật biển",
+    example:
+      "Plastic waste poses a serious threat to thousands of marine creatures every year.",
+    cloze:
+      "Plastic waste threatens {{c1::thousands of marine creatures}}. (Rác thải nhựa đe dọa hàng ngàn sinh vật biển.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_in_the_war_against",
+    expression: "in the war against",
+    partOfSpeech: "prep. phrase",
+    wordStress: "/ɪn ðə wɔːr əˈɡenst/",
+    meaningVN: "trong cuộc chiến chống lại",
+    englishMeaning:
+      "as part of a strong effort to fight a major problem - như một phần của nỗ lực mạnh mẽ để chống lại một vấn đề lớn",
+    grammarPattern:
+      "in the war against + noun - trong cuộc chiến chống lại + danh từ",
+    register:
+      "Dramatic; use for serious global problems such as climate change or pollution.",
+    synonyms: [
+      "in the fight against something (prep. phrase) - trong cuộc chiến chống lại điều gì đó"
+    ],
+    wordFamily: [
+      "war (n) - cuộc chiến",
+      "fight (n/v) - cuộc đấu tranh / chống lại",
+      "against (prep) - chống lại"
+    ],
+    chunk:
+      "in the war against climate change - trong cuộc chiến chống biến đổi khí hậu",
+    example: 
+      "Both governments and individuals need to try their very best in the war against climate change and environmental degradation.",
+    cloze:
+      "Both governments and individuals have a role {{c1::in the war against}} climate change. (Cả chính phủ và cá nhân đều có vai trò trong cuộc chiến chống biến đổi khí hậu.)",
+    typePrompt: "in the war ___ climate change",
+    typeAnswer: "against",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_both_a_and_b_need_to_do_something",
+    expression: "both A and B need to do something",
+    partOfSpeech: "sentence frame",
+    wordStress: "/boʊθ eɪ ænd biː niːd tə duː ˈsʌmθɪŋ/",
+    meaningVN: "cả A và B đều cần phải làm điều gì đó",
+    grammarPattern:
+      "both A and B need to + verb - cả A và B đều cần + động từ",
+    synonyms: [
+      "A and B should both do something (sentence frame) - A và B đều nên làm điều gì đó"
+    ],
+    chunk:
+      "both governments and individuals need to act - cả chính phủ và cá nhân đều cần hành động",
+    example:
+      "Both governments and individuals need to try their very best in the war against climate change.",
+    cloze:
+      "{{c1::Both governments and individuals need to}} reduce their environmental impact. (Cả chính phủ và cá nhân đều cần giảm tác động môi trường của mình.)",
+    typePrompt: "Both governments ___ individuals need to act.",
+    typeAnswer: "and",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_try_your_very_best_to_do_something",
+    expression: "try one's very best (to do something)",
+    partOfSpeech: "v. phrase",
+    wordStress: "/traɪ wʌnz ˈveri best tə duː ˈsʌmθɪŋ/",
+    meaningVN: "cố gắng hết sức (để làm điều gì đó)",
+    grammarPattern:
+      "try one's very best to + verb - cố gắng hết sức để + động từ",
+    synonyms: [
+      "make every effort to do something (v phrase) - nỗ lực hết sức để làm điều gì đó"
+    ],
+    wordFamily: [
+      "try (v/n) - cố gắng / nỗ lực",
+      "best (n/adj) - điều tốt nhất / tốt nhất",
+      "effort (n) - nỗ lực"
+    ],
+    chunk:
+      "try their very best to reduce pollution - cố gắng hết sức để giảm ô nhiễm",
+    example:
+      "Both governments and individuals should try their very best to reduce pollution.",
+    cloze:
+      "Individuals should {{c1::try their very best to}} reduce pollution. (Các cá nhân nên cố gắng hết sức để giảm ô nhiễm.)",
+    typePrompt: "try their very best ___ reduce pollution",
+    typeAnswer: "to",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_make_every_possible_effort_to_do_something",
+    expression: "make every possible effort to do something",
+    partOfSpeech: "v. phrase",
+    wordStress: "/meɪk ˈevri ˈpɑːsəbl ˈefərt tə duː ˈsʌmθɪŋ/",
+    meaningVN: "thực hiện mọi nỗ lực có thể để làm điều gì đó",
+    grammarPattern:
+      "make every possible effort to + verb - thực hiện mọi nỗ lực có thể để + động từ",
+    synonyms: [
+      "make every effort to do something (v phrase) - nỗ lực hết sức để làm điều gì đó",
+      "do everything possible to do something (v phrase) - làm mọi điều có thể để làm điều gì đó"
+    ],
+    antonyms: [
+      "make little effort to do something (v phrase) - ít nỗ lực để làm điều gì đó"
+    ],
+    wordFamily: [
+      "make (v) - thực hiện / tạo ra",
+      "possible (adj) - có thể",
+      "possibly (adv) - có thể",
+      "effort (n) - nỗ lực"
+    ],
+    chunk:
+      "make every possible effort to tackle environmental pollution - thực hiện mọi nỗ lực có thể để giải quyết ô nhiễm môi trường",
+    example: 
+      "International governments and environmental groups need to make every possible effort to tackle environmental pollution, which is putting life on Earth in great danger.",
+    cloze:
+      "Governments need to {{c1::make every possible effort to}} tackle environmental pollution. (Các chính phủ cần thực hiện mọi nỗ lực có thể để giải quyết ô nhiễm môi trường.)",
+    typePrompt: "make every possible effort ___ tackle pollution",
+    typeAnswer: "to",
+    cardModes: ["recognition", "production", "cloze", "type_answer"]
+  },
+  {
+    ...environmentDefaults,
+    uid: "ielts_international_governments_and_environmental_groups",
+    expression: "international governments and environmental groups",
+    partOfSpeech: "n. phrase",
+    wordStress:
+      "/ˌɪntərˈnæʃənl ˈɡʌvərnmənts ænd ɪnˌvaɪrənˈmentl ɡruːps/",
+    meaningVN: "các chính phủ quốc tế và các nhóm bảo vệ môi trường",
+    englishMeaning:
+      "national governments working internationally and organisations focused on environmental protection - các chính phủ hợp tác ở cấp quốc tế và các tổ chức tập trung vào bảo vệ môi trường",
+    synonyms: [
+      "governments and environmental organisations (n phrase) - các chính phủ và tổ chức môi trường"
+    ],
+    wordFamily: [
+      "international (adj) - quốc tế",
+      "government (n) - chính phủ",
+      "environmental (adj) - thuộc về môi trường",
+      "group (n) - nhóm / tổ chức"
+    ],
+    chunk:
+      "international governments and environmental groups need to cooperate - các chính phủ quốc tế và các nhóm môi trường cần hợp tác",
+    example:
+      "International governments and environmental groups need to cooperate to tackle environmental pollution.",
+    cloze:
+      "{{c1::International governments and environmental groups}} need to cooperate. (Các chính phủ quốc tế và các nhóm môi trường cần hợp tác.)",
+    cardModes: ["recognition", "production", "cloze"]
+  },
 ];
